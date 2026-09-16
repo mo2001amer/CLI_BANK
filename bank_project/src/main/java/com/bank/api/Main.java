@@ -1,0 +1,8 @@
+package com.bank.api;
+
+public class Main {
+    public static void main(String[] args) {
+        Repl repl = new Repl();
+        repl.run();
+    }
+}
