@@ -1,7 +1,20 @@
 package com.bank.api;
 import java.util.*;
+
+import com.bank.domain.Customer;
+import com.bank.business.CustomerService;
 public class Repl {
     private final Scanner sc = new Scanner(System.in); 
+    private final CustomerService customerService;
+    
+
+    public Repl(CustomerService customerService)
+    {
+        this.customerService = customerService;
+
+
+    }
+
 
 
 
@@ -31,13 +44,33 @@ public class Repl {
     //THIS HANDLES THE USER PICK
     private void handle(String command){
         switch (command) {
-            // IF user chooses register make them create new id and pin
+            // CASE 1 : registering user
             case "1": 
-                System.out.println();
-                //register(id, pin);
+                System.out.println("Please enter accountID: ");
+                try {
+                    System.out.println("Please enter account ID:");
+                    String input = sc.nextLine().trim();
+
+                    int accountId = Integer.parseInt(input);
+                    
+                    
+                    System.out.println("Please enter PIN:");
+                    input = sc.nextLine().trim();
+
+                    int pin = Integer.parseInt(input);
+                    Customer customer = new Customer(accountId, pin, 0);
+                    customerService.register(customer);
+
+                    } 
+                catch (NumberFormatException e) {
+                    System.out.println("Account ID must be a number.");
+                }
+                catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                }
              
                 
-            //IF user asks login ask for username and password
+            //CASE 2 : LOGIN
             //case "2" -> LOGIN();
         }
     }

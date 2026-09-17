@@ -1,12 +1,33 @@
-package com.bank.business;
+package com.bank.repo;
 
-import com.bank.domain.Customer;
 import java.util.List;
 
-public interface CustomerService {
+import com.bank.domain.Customer;
+
+public interface CustomerDAO {
 
     // When someone registers
-    public void register(Customer customer);
+    void addCustomer(Customer customer);
+
+    //to check if customer id already exists
+    boolean customerExists(int accountID);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // //get someones customer by id
     // Customer getCustomerById(int id);
@@ -19,4 +40,6 @@ public interface CustomerService {
 
     // //just incase we need to delete a customer if they already have an account
     // void deleteCustomer(int id);
+
+
 }
